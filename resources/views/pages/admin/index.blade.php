@@ -5,7 +5,8 @@
 @section('content')
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title">With Home Icon</h5>
+            <h5 class="card-title text-center  ">Welcome <span class="fs-3 text-danger">{{ Auth::user()->name }}</span> sayang
+                🥵</h5>
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.html"><i class="bi bi-house-door"></i></a></li>
@@ -13,4 +14,5 @@
             </nav>
         </div>
     </div>
+
 @endsection
