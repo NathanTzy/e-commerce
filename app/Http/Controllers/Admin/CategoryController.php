@@ -38,7 +38,7 @@ class CategoryController extends Controller
             'name' => 'required',
             'image' => 'required|image|mimes:png,jpeg,jpg|max:2048',
         ]);
-        try {
+        try {      
             // create category
             $data = $request->all();
 

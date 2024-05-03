@@ -31,6 +31,9 @@
     <!-- Template Main CSS File -->
     <link href="{{ asset('dashboard/assets/css/style.css') }}" rel="stylesheet">
 
+      {{-- CKEditor cdn --}}
+      <script src="https://cdn.ckeditor.com/ckeditor5/41.1.0/classic/ckeditor.js"></script>
+
     <!-- =======================================================
   * Template Name: NiceAdmin
   * Updated: Jan 29 2024 with Bootstrap v5.3.2
@@ -60,7 +63,7 @@
             <hr>
             <p>
                 <ul>
-                    @foreach ($errors->$all() as $error)
+                    @foreach ($errors->all() as $error)
                         <li>{{ $error }}</li>
                     @endforeach
                 </ul>
