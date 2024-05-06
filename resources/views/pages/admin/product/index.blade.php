@@ -8,8 +8,8 @@
     <nav>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-            <li class="breadcrumb-item"><a href="#">Product</a></li>
-            <li class="breadcrumb-item "><a href="#">Category</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('admin.product.index') }}">Product</a></li>
+            <li class="breadcrumb-item "><a href="#">Data product gallery</a></li>
         </ol>
     </nav>
 
@@ -68,7 +68,7 @@
                                                         data-bs-target="#editModalProduct{{ $row->id }}">
                                                         <i class="bi bi-pencil text-white"></i>
                                                     </button>
-                                                    <a href="#" class="btn btn-info"><i
+                                                    <a href="{{ route('admin.product.gallery.index', $row->id) }}" class="btn btn-info"><i
                                                             class="bi bi-card-image text-white"></i></a>
                                                     @include('pages.admin.product.modal-edit')
                                                     <form action="{{ route('admin.product.destroy', $row->id) }}"

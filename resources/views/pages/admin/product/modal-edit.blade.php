@@ -21,7 +21,7 @@
                     </div>
                     <div class="col-12 mt-3">
                         <label for="inputNanme4" class="form-label text-danger">Description</label>
-                        <textarea id="edit" name="description">{{ $row->description }}</textarea>
+                        <textarea id="editor" name="description">{{ $row->content }}</textarea>
                     </div>
                     <div class="col-12 mt-3">
                         <label for="inputNanme4" class="form-label text-danger">Select category</label>
@@ -48,7 +48,7 @@
 {{-- CKEditor --}}
 <script>
     ClassicEditor
-        .create(document.querySelector('#edit'))
+        .create(document.querySelector('#editor'))
         .then(editor => {
             console.log(editor);
         })

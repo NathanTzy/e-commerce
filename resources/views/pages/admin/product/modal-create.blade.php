@@ -20,7 +20,7 @@
                     </div>
                     <div class="col-12 mt-3">
                         <label for="inputNanme4" class="form-label text-danger">Description</label>
-                        <textarea id="editor" name="description"></textarea>
+                        <textarea id="edit" name="description"></textarea>
                     </div>
                     <div class="col-12 mt-3">
                         <label for="inputNanme4" class="form-label text-danger">Select category</label>
@@ -45,7 +45,7 @@
 {{-- CKEditor --}}
 <script>
     ClassicEditor
-        .create(document.querySelector('#editor'))
+        .create(document.querySelector('#edit'))
         .then(editor => {
             console.log(editor);
         })
