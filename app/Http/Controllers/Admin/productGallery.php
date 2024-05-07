@@ -16,7 +16,7 @@ class productGallery extends Controller
         $product = product::findOrFail($id);
         $gallery = $product->product_galleries;
 
-        return view('pages.admin.product.gallery.index', compact('product','gallery'));
+        return view('pages.admin.product.gallery.index', compact('product', 'gallery'));
     }
 
     /**
@@ -32,7 +32,12 @@ class productGallery extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate(
+            $request,
+            [
+                image
+            ]
+        );
     }
 
     /**

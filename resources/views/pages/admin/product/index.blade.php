@@ -4,12 +4,12 @@
 
 
 @section('content')
-    <h5 class="card-title fs-1">Product</h5>
+    <h5 class="card-title fs-1">Data Product</h5>
     <nav>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
             <li class="breadcrumb-item"><a href="{{ route('admin.product.index') }}">Product</a></li>
-            <li class="breadcrumb-item "><a href="#">Data product gallery</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('admin.product.index') }}">Data Product</a></li>
         </ol>
     </nav>
 

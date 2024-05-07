@@ -5,20 +5,24 @@
 
 @section('content')
 
-<h5 class="card-title fs-1">{{ $product->name }} image</h5>
-<nav>
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-        <li class="breadcrumb-item"><a href="{{ route('admin.product.index') }}">Product</a></li>
-        <li class="breadcrumb-item "><a href="{{ route('admin.product.gallery.index') }}">Product gallery</a></li>
-    </ol>
-</nav>
+    <h5 class="card-title fs-1">{{ $product->name }} image</h5>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('admin.product.index') }}">Product</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('admin.product.index') }}">Data Product</a></li>
+            <li class="breadcrumb-item "><a href="{{ route('admin.product.gallery.index', ['product']) }}">Product gallery</a></li>
+        </ol>
+    </nav>
     <div class="card">
         <div class="card-body">
-            <div class="d-flex justify-content-center">
-                <a href="#" class="btn btn-primary mt-3 "><span class="i bi bi-plus">
-                        Image
-                    </span></a>
+            <div class="d-flex justify-content-center mt-3">
+                <!-- Basic Modal -->
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#basicModal">
+                    <i class="bi bi-plus"> Image</i>
+                </button>
+                @include('pages.admin.product.gallery.modal-create')
+                <!-- End Basic Modal-->
             </div>
 
             <table class="table">
@@ -41,4 +45,5 @@
             </table>
         </div>
     </div>
+
 @endsection
