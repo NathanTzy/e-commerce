@@ -218,6 +218,16 @@
                         <li>
                             <hr class="dropdown-divider">
                         </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center"
+                                href="{{ route('user.profile.changePassword') }}">
+                                <i class="bi bi-gear"></i>
+                                <span>Change Password</span>
+                            </a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
 
                         <li>
                             <form action="{{ route('logout') }}" method="post">
