@@ -14,17 +14,20 @@ class product extends Model
         'name',
         'slug',
         'description',
-        'price' 
+        'price'
     ];
 
-    public function category(){
+    public function category()
+    {
         return $this->belongsTo(Category::class);
     }
 
-    public function product_galleries(){
+    public function product_galleries()
+    {
         return $this->hasMany(ProductGallery::class);
     }
-     public function cart(){
+    public function cart()
+    {
         return $this->hasMany(cart::class);
     }
 }

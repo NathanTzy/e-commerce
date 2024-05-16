@@ -11,10 +11,8 @@ use App\Http\Controllers\Admin\ProductController as AdminProductController;
 use App\Models\productGallery as ModelsProductGallery;
 use App\Models\transaction;
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+Route::get('/', [App\Http\Controllers\frontEnd\frontEndController::class, 'index']);
+Route::get('/detail/{slug}', [App\Http\Controllers\frontEnd\frontEndController::class, 'detailProduct'])->name('detail.product');
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
