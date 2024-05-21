@@ -19,8 +19,9 @@
                         <input type="number" class="form-control" id="productPrice" name="price">
                     </div>
                     <div class="col-12 mt-3">
-                        <label for="inputNanme4" class="form-label text-danger">Description</label>
-                        <textarea id="edit" name="description"></textarea>
+                        <label for="productName" class="form-label text-danger">Product Description</label>
+                        <input type="text" class="form-control" id="productName" name="description"
+                            value="{{ old('description') }}">
                     </div>
                     <div class="col-12 mt-3">
                         <label for="inputNanme4" class="form-label text-danger">Select category</label>
@@ -40,16 +41,3 @@
         </div>
     </div>
 </div>
-
-{{-- PAKE ID!!! --}}
-{{-- CKEditor --}}
-<script>
-    ClassicEditor
-        .create(document.querySelector('#edit'))
-        .then(editor => {
-            console.log(editor);
-        })
-        .catch(error => {
-            console.error(error);
-        });
-</script>

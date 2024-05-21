@@ -12,8 +12,17 @@ use App\Models\productGallery as ModelsProductGallery;
 use App\Models\transaction;
 
 Route::get('/', [App\Http\Controllers\frontEnd\frontEndController::class, 'index']);
-Route::get('/detail/{slug}', [App\Http\Controllers\frontEnd\frontEndController::class, 'detailProduct'])->name('detail.product');
+Route::get('/detail-product/{slug}', [App\Http\Controllers\frontEnd\frontEndController::class, 'detailProduct'])->name('detail.product');
+Route::get('/detail-category/{slug}', [App\Http\Controllers\frontEnd\frontEndController::class, 'detailCategory'])->name('detail.category');
+
 Auth::routes();
+
+Route::middleware('auth')->group(function(){
+    Route::get('/cart', [App\Http\Controllers\frontEnd\frontEndController::class, 'cart'])->name('cart');
+    Route::post('/cart/{id}', [App\Http\Controllers\frontEnd\frontEndController::class, 'addToCart'])->name('cart.add');
+    Route::delete('/cart/{id}', [App\Http\Controllers\frontEnd\frontEndController::class,'deleteCart'])->name('deleteCart');
+    Route::post('/checkout', [App\Http\Controllers\frontEnd\frontEndController::class,'checkout'])->name('checkout');
+});
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
