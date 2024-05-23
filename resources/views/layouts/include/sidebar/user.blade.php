@@ -11,17 +11,22 @@
             </li><!-- End Dashboard Nav -->
 
             <li class="nav-item">
-                <a class="nav-link" data-bs-target="#components-nav" data-bs-toggle="collapse"
-                    href="#">
-                    <i class="bi bi-menu-button-wide"></i><span>My Transcation</span><i
+                <a class="nav-link {{ request()->routeIs('user.product.*') ? '' : 'collapsed' }} "
+                    data-bs-target="#component-transaction" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-menu-button-wide"></i><span>Transaction</span><i
                         class="bi bi-chevron-down ms-auto"></i>
                 </a>
-                <ul id="components-nav" class="nav-content">
-                    <li>
-                        <a href="#">
-                            <i class="bi bi-circle"></i><span>Transaction</span>
+                <ul id="component-transaction"
+                    class="nav-content {{ request()->routeIs('user.product.*') ? 'show' : '' }} "
+                    data-bs-parent="#sidebar-nav">
+                    <li>    
+                        <a href="{{ route('user.myTransaction.index') }}"
+                            class="{{ request()->routeIs('user.myTransaction.*') ? 'active' : '' }}">
+                            <i class="bi bi-circle"></i><span>My Transaction</span>
                         </a>
                     </li>
+
+
                 </ul>
             </li><!-- End Components Nav -->
             

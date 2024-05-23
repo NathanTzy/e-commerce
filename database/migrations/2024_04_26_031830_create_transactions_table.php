@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('address');
             $table->string('courier')->nullable();
             $table->string('payment')->nullable();
-            $table->string('payment_url')->default('mitrans');
+            $table->string('payment_url')->default('midtrans');
             $table->string('status')->default('PENDING');
             $table->string('total_price');
             $table->timestamps();

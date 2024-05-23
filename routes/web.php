@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\myTransaction;
 use App\Http\Controllers\Admin\ProductController as AdminProductController;
+use App\Http\Controllers\Admin\TransactionController;
 use App\Models\productGallery as ModelsProductGallery;
 use App\Models\transaction;
 
@@ -32,8 +33,8 @@ Route::name('admin.')->prefix('admin')->middleware('admin')->group(function(){
     Route::resource('/product',ProductController::class)->except('show');
     Route::resource('/product.gallery', productGallery::class)->except('create','show','edit','update');
     Route::put('/resetPassword/{id}', [\App\Http\Controllers\Admin\DashboardController::class, 'resetPassword'])->name('reset-password');
-    Route::resource('transaction', transaction::class);
-    Route::resource('myTransaction', myTransaction::class)->only(['index','show']);
+    Route::resource('/transaction', TransactionController::class);
+    Route::resource('/myTransaction', myTransaction::class)->only(['index','show']);
 });
 route::name('user.')->prefix('user')->middleware('user')->group(function(){
     route::get('/dashboard', [\App\Http\Controllers\User\DashboardController::class, 'index'])->name('dashboard');

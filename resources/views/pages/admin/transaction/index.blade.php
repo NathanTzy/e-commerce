@@ -1,19 +1,16 @@
 @extends('layouts.parent')
 
-@section('title', 'My Transaction')
+@section('title', 'Transaction')
 @section('content')
     <h5 class="card-title fs-1">My Transaction</h5>
     <nav>
         <ol class="breadcrumb">
-            @if (Auth::user()->role == 'admin')
-                <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-            @else
-                <li class="breadcrumb-item"><a href="{{ route('user.dashboard') }}">Dashboard</a></li>
-            @endif
+            <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
             <li class="breadcrumb-item"><a href="#">Transaction</a></li>
-            <li class="breadcrumb-item "><a href="#">My Transaction</a></li>
+            <li class="breadcrumb-item "><a href="#">Transaction</a></li>
         </ol>
     </nav>
+
     <div class="card">
         <div class="card-body">
             <div class="card-title">Transaction List <i class="bi bi-cart-fill"></i></div>
@@ -26,19 +23,25 @@
                         <th scope="col">Reciever Name</th>
                         <th scope="col">Email</th>
                         <th scope="col">Phone</th>
-                        <th scope="col">Status</th>
+                        <th scope="col">Payment Url</th>
                         <th scope="col">Total Price</th>
-                        <th scope="col">Action</th>
+                        <th scope="col">Status</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse ($myTransaction as $row)
+                    @forelse ($transaction as $row)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ auth()->user()->name }}</td>
+                            <td>{{ $row->user->name }}</td>
                             <td>{{ $row->name }}</td>
                             <td>{{ $row->email }}</td>
                             <td>{{ $row->phone }}</td>
+                            @if ($row->payment_url == 'null')
+                                <span>NULL</span>
+                            @else
+                                <td><a href="{{ $row->payment_url }}" target="blank">MIDTRANS</a></td>
+                            @endif
+                            <td>{{ number_format($row->total_price) }}</td>
                             <td>
                                 @if ($row->status = 'EXPIRED')
                                     <span class="badge bg-danger">{{ $row->status }}</span>
@@ -50,14 +53,6 @@
                                     <span class="badge bg-success">{{ $row->status }}</span>
                                 @endif
                             </td>
-                            <td>{{ number_format($row->total_price) }}</td>
-                            @if (Auth::user()->role == 'admin')
-                                <td><a href="{{ route('admin.myTransaction.show', $row->id) }}"
-                                        class="btn btn-info text-white">Detail</a></td>
-                            @else
-                            <td><a href="{{ route('user.myTransaction.show',$row->id) }}" class="btn btn-info text-white">Detail</a></td>
-                            @endif
-
                         </tr>
                     @empty
                     @endforelse
