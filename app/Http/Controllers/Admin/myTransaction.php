@@ -15,7 +15,7 @@ class myTransaction extends Controller
     public function index()
     {
         $myTransaction = transaction::with('user')->where('user_id', auth()->id())->latest()->get();
-        return view('pages.admin.myTransaction.index',compact('myTransaction'));
+        return view('pages.admin.myTransaction.index', compact('myTransaction'));
     }
 
     /**
@@ -37,9 +37,9 @@ class myTransaction extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id) 
+    public function show(string $name)
     {
-    $transactionItem = transactionItem::with(['product'])->where('transaction_id',$id)->get();
+        $transactionItem = transactionItem::with(['product'])->where('transaction_id','name', $name)->get();
         return view('pages.admin.myTransaction.show', compact('transactionItem'));
     }
 
