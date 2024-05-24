@@ -62,7 +62,7 @@
                                                 </td>
                                                 <td>{{ $row->name }}</td>
                                                 <td>{{ $row->category->name }}</td>
-                                                <td>{{ $row->price }}</td>
+                                                <td>{{ number_format($row->price) }}</td>
                                                 <td class="d-flex justify-content-evenly">
                                                     <button class="btn btn-warning" data-bs-toggle="modal"
                                                         data-bs-target="#editModalProduct{{ $row->id }}">
