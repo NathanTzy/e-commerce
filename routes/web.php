@@ -35,12 +35,14 @@ Route::name('admin.')->prefix('admin')->middleware('admin')->group(function () {
     Route::put('/resetPassword/{id}', [\App\Http\Controllers\Admin\DashboardController::class, 'resetPassword'])->name('reset-password');
     Route::resource('/transaction', TransactionController::class);
     Route::resource('/myTransaction', myTransaction::class)->only(['index']);
-    Route::get('/myTransaction/{id}/{slug}', [myTransaction::class], 'showDataBySlugAndId')->name('myTransaction.showDataBySlugAndId');
+    Route::get('/my-transaction/{id}/{slug}', [myTransaction::class, 'testShow'])->name('my-transaction.show');
+    Route::get('/my-transaction/{id}/{slug}', [myTransaction::class, 'showDataBySlugAndId'])->name('my-transaction.showDataBySlugAndId');
 });
 route::name('user.')->prefix('user')->middleware('user')->group(function () {
     route::get('/dashboard', [\App\Http\Controllers\User\DashboardController::class, 'index'])->name('dashboard');
     Route::get('/changePassword', [\App\Http\Controllers\User\DashboardController::class, 'changePassword'])->name('profile.changePassword');
     Route::put('/updatePassword', [\App\Http\Controllers\User\DashboardController::class, 'updatePassword'])->name('profile.updatePassword');
     Route::resource('myTransaction', myTransaction::class)->only(['index']);
-    Route::get('/myTransaction/{id}/{slug}', [myTransaction::class], 'showDataBySlugAndId')->name('myTransaction.showDataBySlugAndId');
+    Route::get('/my-transaction/{id}/{slug}', [myTransaction::class, 'testShow'])->name('my-transaction.show');
+    Route::get('/my-transaction/{id}/{slug}', [myTransaction::class, 'showDataBySlugAndId'])->name('my-transaction.showDataBySlugAndId');
 });

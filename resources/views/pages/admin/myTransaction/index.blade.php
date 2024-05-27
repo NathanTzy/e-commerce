@@ -52,10 +52,11 @@
                             </td>
                             <td>{{ number_format($row->total_price) }}</td>
                             @if (Auth::user()->role == 'admin')
-                                <td><a href="{{ route('admin.myTransaction.show', $row->name) }}"
+                                <td><a href="{{ route('admin.my-transaction.showDataBySlugAndId', [$row->slug, $row->id]) }}"
                                         class="btn btn-info text-white">Detail</a></td>
                             @else
-                            <td><a href="{{ route('user.myTransaction.show',$row->name) }}" class="btn btn-info text-white">Detail</a></td>
+                                <td><a href="{{ route('user.my-transaction.showDataBySlugAndId', [$row->slug, $row->id]) }}"
+                                        class="btn btn-info text-white">Detail</a></td>
                             @endif
 
                         </tr>

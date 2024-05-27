@@ -73,4 +73,13 @@ class myTransaction extends Controller
 
         return view('pages.admin.myTransaction.show', compact('transaction'));
     }
+
+    public function testShow($slug, $id)
+    {
+        $transaction = transaction::where('slug', $slug)->where('id', $id)->firstOrFail();
+
+        // dd($transaction);
+
+        return view('pages.admin.myTransaction.show', compact('transaction'));
+    }
 }
