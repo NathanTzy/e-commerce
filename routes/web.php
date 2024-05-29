@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\ProductController as AdminProductController;
 use App\Http\Controllers\Admin\TransactionController;
 use App\Models\productGallery as ModelsProductGallery;
 use App\Models\transaction;
+use Illuminate\Support\Facades\Artisan;
 
 Route::get('/', [App\Http\Controllers\frontEnd\frontEndController::class, 'index']);
 Route::get('/detail-product/{slug}', [App\Http\Controllers\frontEnd\frontEndController::class, 'detailProduct'])->name('detail.product');
@@ -37,6 +38,7 @@ Route::name('admin.')->prefix('admin')->middleware('admin')->group(function () {
     Route::resource('/myTransaction', myTransaction::class)->only(['index']);
     Route::get('/my-transaction/{id}/{slug}', [myTransaction::class, 'testShow'])->name('my-transaction.show');
     Route::get('/my-transaction/{id}/{slug}', [myTransaction::class, 'showDataBySlugAndId'])->name('my-transaction.showDataBySlugAndId');
+    Route::get('/transaction/{id}/{slug}', [TransactionController::class, 'showTransactionBySlugId'])->name('showTransactionBySlugId');
 });
 route::name('user.')->prefix('user')->middleware('user')->group(function () {
     route::get('/dashboard', [\App\Http\Controllers\User\DashboardController::class, 'index'])->name('dashboard');
@@ -45,4 +47,12 @@ route::name('user.')->prefix('user')->middleware('user')->group(function () {
     Route::resource('myTransaction', myTransaction::class)->only(['index']);
     Route::get('/my-transaction/{id}/{slug}', [myTransaction::class, 'testShow'])->name('my-transaction.show');
     Route::get('/my-transaction/{id}/{slug}', [myTransaction::class, 'showDataBySlugAndId'])->name('my-transaction.showDataBySlugAndId');
+});
+
+// route artisan call
+Route::get('/artisan-call', function () {
+    Artisan::call('storage:link'); 
+    Artisan::call('route:clear'); 
+    Artisan::call('config:clear'); 
+    return 'done';
 });

@@ -2,15 +2,21 @@
 
 namespace App\Http\Controllers\User;
 
-use App\Http\Controllers\Controller;
+use App\Models\transaction;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use App\Models\transaction as ModelsTransaction;
 
 class DashboardController extends Controller
 {
     public function index()
     {
-        return view('pages.user.index');
+        $pending = transaction::where('user_id', auth()->user()->id)->where('status', 'PENDING')->count();
+        $settlement = transaction::where('user_id', auth()->user()->id)->where('status', 'SETTLEMENT')->count();
+        $expired = transaction::where('user_id', auth()->user()->id)->where('status', 'EXPIRED')->count();
+        $success = transaction::where('user_id', auth()->user()->id)->where('status', 'SUCCESS')->count();
+        return view('pages.user.index',compact('pending','settlement','expired','success'));
     }
     public function changePassword()
     {

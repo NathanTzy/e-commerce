@@ -40,15 +40,16 @@
                             <td>{{ $row->email }}</td>
                             <td>{{ $row->phone }}</td>
                             <td>
-                                @if ($row->status = 'EXPIRED')
-                                    <span class="badge bg-danger">{{ $row->status }}</span>
-                                @elseif ($row->status = 'PENDING')
-                                    <span class="badge bg-warning">{{ $row->status }}</span>
-                                @elseif ($row->status = 'SETTLEMENT')
-                                    <span class="badge bg-info">{{ $row->status }}</span>
+                                @if ($row->status == 'EXPIRED')
+                                <span class="badge bg-danger text-uppercast">Expired</span>
+                                @elseif ($row->status == 'PENDING')
+                                <span class="badge bg-warning text-uppercast">Pending</span>
+                                @elseif ($row->status == 'SATTLEMENT')
+                                <span class="badge bg-info text-uppercast">Sattlement</span>
                                 @else
-                                    <span class="badge bg-success">{{ $row->status }}</span>
+                                <span class="badge bg-success text-uppercast">Success</span>
                                 @endif
+        
                             </td>
                             <td>{{ number_format($row->total_price) }}</td>
                             @if (Auth::user()->role == 'admin')
